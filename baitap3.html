@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập JavaScript</title>
+</head>
+
+<body>
+<h1>Các Bài Tập với Hàm trong JavaScript</h1>
+
+<h2>Bài 1: Tính Bình Phương</h2>
+<button onclick="alert(binhPhuong(5))">Tính bình phương của 5</button>
+<script>
+    function binhPhuong(num) {
+        return num * num;
+    }
+</script>
+
+<h2>Bài 2: Tính Diện Tích và Chu Vi Hình Tròn</h2>
+<button onclick="alert('Diện tích: ' + tinhDienTich(5) + ', Chu vi: ' + tinhChuVi(5))">Tính cho bán kính 5</button>
+<script>
+    function tinhDienTich(r) {
+        return Math.PI * r * r;
+    }
+
+    function tinhChuVi(r) {
+        return 2 * Math.PI * r;
+    }
+</script>
+
+<h2>Bài 3: Tính Giai Thừa</h2>
+<button onclick="alert(giaiThua(5))">Tính giai thừa của 5</button>
+<script>
+    function giaiThua(n) {
+        if (n === 0) return 1;
+        return n * giaiThua(n - 1);
+    }
+</script>
+
+<h2>Bài 4: Kiểm Tra Ký Tự Là Số</h2>
+<button onclick="alert(kiemTraKyTu('5'))">Kiểm tra ký tự '5'</button>
+<script>
+    function kiemTraKyTu(kyTu) {
+        return !isNaN(kyTu) && !isNaN(parseFloat(kyTu));
+    }
+</script>
+
+<h2>Bài 5: Tìm Giá Trị Nhỏ Nhất Trong 3 Số</h2>
+<button onclick="alert(timGiaTriNhoNhat(3, 7, 1))">Tìm giá trị nhỏ nhất trong 3 số 3, 7, 1</button>
+<script>
+    function timGiaTriNhoNhat(a, b, c) {
+        return Math.min(a, b, c);
+    }
+</script>
+
+<h2>Bài 6: Kiểm Tra Nguyên Dương</h2>
+<button onclick="alert(kiemTraNguyenDuong(5))">Kiểm tra 5 có phải là nguyên dương không</button>
+<script>
+    function kiemTraNguyenDuong(num) {
+        return Number.isInteger(num) && num > 0;
+    }
+</script>
+
+<h2>Bài 7: Đổi Chỗ Hai Số Nguyên</h2>
+<button onclick="alert(doiCho(5, 10))">Đổi chỗ 5 và 10</button>
+<script>
+    function doiCho(a, b) {
+        return [b, a];
+    }
+</script>
+
+<h2>Bài 8: Đảo Ngược Mảng Số Nguyên</h2>
+<button onclick="alert(daoNguocMang([1, 2, 3, 4]))">Đảo ngược mảng [1, 2, 3, 4]</button>
+<script>
+    function daoNguocMang(arr) {
+        return arr.reverse();
+    }
+</script>
+
+<h2>Bài 9: Kiểm Tra Ký Tự Trong Mảng</h2>
+<button onclick="alert(kiemTraKyTuTrongMang(['a', 'b', 'c', 'a'], 'a'))">Kiểm tra ký tự 'a'</button>
+<script>
+    function kiemTraKyTuTrongMang(mang, kyTu) {
+        const count = mang.filter(item => item === kyTu).length;
+        return count > 0 ? count : -1;
+    }
+</script>
+</body>
+
+</html>

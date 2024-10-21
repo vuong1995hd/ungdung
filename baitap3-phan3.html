@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 3</title>
+  <script>
+    function compareAndSum(a, b) {
+      if (a > b) {
+        alert("Giá trị thứ nhất lớn hơn giá trị thứ hai!");
+      } else {
+        return a + b;
+      }
+    }
+    function displayResult() {
+      const result = compareAndSum(10, 5);
+      if (result !== undefined) {
+        document.getElementById("result").innerText = "Tổng: " + result;
+      }
+    }
+  </script>
+</head>
+<body onload="displayResult()">
+<div id="result"></div>
+</body>
+</html>

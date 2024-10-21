@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2</title>
+    <script>
+        function incrementByOne(num) {
+            return num + 1;
+        }
+        function displayResult() {
+            const result = incrementByOne(5);
+            document.getElementById("result").innerText = "Kết quả: " + result;
+        }
+    </script>
+</head>
+<body onload="displayResult()">
+<div id="result"></div>
+</body>
+</html>
