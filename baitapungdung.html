@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 10px; text-align: left; }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+<h1>Ứng Dụng Quản Lý Sản Phẩm</h1>
+<div>
+    <input type="text" id="productName" placeholder="Tên sản phẩm" />
+    <button onclick="addProduct()">Thêm</button>
+</div>
+<h2>Danh Sách Sản Phẩm</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Số Thứ Tự</th>
+        <th>Tên Sản Phẩm</th>
+        <th>Thao Tác</th>
+    </tr>
+    </thead>
+    <tbody id="productList">
+    </tbody>
+</table>
+<div>
+    <input type="text" id="editProductName" placeholder="Tên sản phẩm muốn sửa" />
+    <button onclick="updateProduct()">Sửa</button>
+</div>
+<script src="ungdung.js"></script>
+
+</body>
+</html>
