@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý sản phẩm</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Quản lý sản phẩm</h2>
+
+<div>
+  <label for="newProduct">Tên sản phẩm mới:</label>
+  <input type="text" id="newProduct">
+  <button onclick="addProduct()">Thêm</button>
+</div>
+
+<div>
+  <h3>Sửa sản phẩm</h3>
+  <select id="productSelect" onchange="populateEditField()">
+    <option value="">Chọn sản phẩm</option>
+  </select>
+  <input type="text" id="editProduct">
+  <button onclick="editProduct()">Sửa</button>
+</div>
+
+<h3>Danh sách sản phẩm</h3>
+<table id="productList">
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Tên sản phẩm</th>
+    <th>Thao tác</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+
+  let productArray = [];
+
+  function displayProducts() {
+    const tableBody = document.getElementById('productList').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Clear current list
+    productArray.forEach((product, index) => {
+      const row = tableBody.insertRow();
+      row.insertCell(0).innerText = index + 1;
+      row.insertCell(1).innerText = product;
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerText = 'Xoá';
+      deleteBtn.onclick = () => deleteProduct(index);
+      row.insertCell(2).appendChild(deleteBtn);
+    });
+
+    populateProductSelect(); // Update the edit dropdown
+  }
+
+  function addProduct() {
+    const productName = document.getElementById('newProduct').value;
+    if (productName) {
+      productArray.push(productName);
+      document.getElementById('newProduct').value = ''; // Clear input
+      displayProducts();
+      alert(`Đã thêm sản phẩm: ${productName}`);
+    } else {
+      alert("Vui lòng nhập tên sản phẩm");
+    }
+  }
+
+  function populateEditField() {
+    const select = document.getElementById('productSelect');
+    const productIndex = select.selectedIndex - 1; // Offset due to default option
+    if (productIndex >= 0) {
+      document.getElementById('editProduct').value = productArray[productIndex];
+    } else {
+      document.getElementById('editProduct').value = '';
+    }
+  }
+
+  function editProduct() {
+    const select = document.getElementById('productSelect');
+    const productIndex = select.selectedIndex - 1; // Offset due to default option
+    const newName = document.getElementById('editProduct').value;
+    if (productIndex >= 0 && newName) {
+      productArray[productIndex] = newName;
+      displayProducts();
+      alert(`Đã sửa sản phẩm: ${newName}`);
+    } else {
+      alert("Vui lòng chọn một sản phẩm và nhập tên mới");
+    }
+  }
+
+  function deleteProduct(index) {
+    productArray.splice(index, 1);
+    displayProducts();
+  }
+
+  function populateProductSelect() {
+    const select = document.getElementById('productSelect');
+    select.innerHTML = '<option value="">Chọn sản phẩm</option>'; // Reset select
+    productArray.forEach((product, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.text = product;
+      select.appendChild(option);
+    });
+  }
+
+  displayProducts();
+</script>
+
+</body>
+</html>
